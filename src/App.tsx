@@ -1,20 +1,16 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Button, Input, List, Pagination, Skeleton, Tabs } from "antd";
+import { Button, List, Pagination, Skeleton, Tabs } from "antd";
 import { Duration } from "luxon";
-import Countdown from "antd/lib/statistic/Countdown";
+import { BrewingPaneInfo } from "./components/BrewingPaneInfo";
+import { BrewInstructions, Tea, TeaInfo, TeaType } from "./types";
 
-const DURATION_KEY_MAP = {
+export const DURATION_KEY_MAP = {
   sec: "seconds",
   secs: "seconds",
   min: "minutes",
   mins: "minutes",
 } as const;
-
-interface Tea {
-  name: string;
-  baseHref: string;
-}
 
 interface TeaPage {
   teas: Tea[];
@@ -22,24 +18,9 @@ interface TeaPage {
   numberOfPages: number;
 }
 
-interface TeaInfo {
-  name: string;
-  description: string;
-  brewingInfo: BrewInstructions[];
-}
-
-interface BrewInstructions {
-  type: string;
-  leafAmount: string;
-  temperature: string;
-  duration?: Duration;
-}
-
 const isValidTea = (data: { [K in keyof Tea]: Tea[K] | null }): data is Tea => {
   return !!data.name && !!data.baseHref && !data.name.includes("Collection");
 };
-
-type TeaType = "oolong" | "all-products";
 
 const getTeas = async (type: TeaType, page = 1): Promise<TeaPage> => {
   const response = await fetch(
@@ -132,53 +113,7 @@ const getTeaInfo = async (tea: Tea): Promise<TeaInfo> => {
   }
 };
 
-const BrewingPaneInfo: FC<BrewInstructions> = ({
-  temperature,
-  leafAmount,
-  duration,
-}) => {
-  const [timerStarted, setTimerStarted] = useState<boolean>(false);
-  const [timerDuration, setTimerDuration] = useState<Duration | undefined>(
-    duration
-  );
-  return (
-    <>
-      <p>Temperature: {temperature}</p>
-      <p>Leaf quantity: {leafAmount}</p>
-      {duration && (
-        <Input.Search
-          type="number"
-          inputMode="decimal"
-          style={{ maxWidth: "150px" }}
-          size="large"
-          defaultValue={duration?.as("seconds")}
-          min={0}
-          step={15}
-          enterButton={timerStarted ? "Stop" : "Start"}
-          onChange={(event) =>
-            setTimerDuration(
-              Duration.fromObject({ seconds: Number(event.target.value) })
-            )
-          }
-          onSearch={() => setTimerStarted((previous) => !previous)}
-        />
-      )}
-      <Countdown
-        format="mm:ss"
-        title="Duration"
-        value={
-          timerStarted && timerDuration
-            ? Date.now() + timerDuration.as("milliseconds")
-            : undefined
-        }
-        onFinish={() => setTimerStarted(false)}
-        valueRender={duration ? undefined : () => "Not specified"}
-      />
-    </>
-  );
-};
-
-function App() {
+export default function App() {
   const [teaType, setTeaType] = useState<TeaType>("all-products");
   const [teas, setTeas] = useState<Tea[]>([]);
   const [tea, setTea] = useState<TeaInfo | undefined>();
@@ -253,5 +188,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
