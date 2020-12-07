@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/red-blossom-tea-timer/static/css/main.580ea89c.chunk.css",
+    "main.js": "/red-blossom-tea-timer/static/js/main.1e03a231.chunk.js",
+    "main.js.map": "/red-blossom-tea-timer/static/js/main.1e03a231.chunk.js.map",
+    "runtime-main.js": "/red-blossom-tea-timer/static/js/runtime-main.a0462ed7.js",
+    "runtime-main.js.map": "/red-blossom-tea-timer/static/js/runtime-main.a0462ed7.js.map",
+    "static/css/2.f3081fb4.chunk.css": "/red-blossom-tea-timer/static/css/2.f3081fb4.chunk.css",
+    "static/js/2.3f54345b.chunk.js": "/red-blossom-tea-timer/static/js/2.3f54345b.chunk.js",
+    "static/js/2.3f54345b.chunk.js.map": "/red-blossom-tea-timer/static/js/2.3f54345b.chunk.js.map",
+    "static/js/3.278a8b4e.chunk.js": "/red-blossom-tea-timer/static/js/3.278a8b4e.chunk.js",
+    "static/js/3.278a8b4e.chunk.js.map": "/red-blossom-tea-timer/static/js/3.278a8b4e.chunk.js.map",
+    "index.html": "/red-blossom-tea-timer/index.html",
+    "static/css/2.f3081fb4.chunk.css.map": "/red-blossom-tea-timer/static/css/2.f3081fb4.chunk.css.map",
+    "static/css/main.580ea89c.chunk.css.map": "/red-blossom-tea-timer/static/css/main.580ea89c.chunk.css.map",
+    "static/js/2.3f54345b.chunk.js.LICENSE.txt": "/red-blossom-tea-timer/static/js/2.3f54345b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a0462ed7.js",
+    "static/css/2.f3081fb4.chunk.css",
+    "static/js/2.3f54345b.chunk.js",
+    "static/css/main.580ea89c.chunk.css",
+    "static/js/main.1e03a231.chunk.js"
+  ]
+}
