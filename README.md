@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Red Blossom Tea Timer
+
+A small React app to help brew [Red Blossom Tea Company](https://redblossomtea.com) teas. Provides timers for brewing with gaiwans, teapots, infusers, etc.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
