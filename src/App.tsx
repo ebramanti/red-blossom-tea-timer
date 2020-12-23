@@ -11,6 +11,7 @@ export const DURATION_KEY_MAP = {
   min: "minutes",
   mins: "minutes",
 } as const;
+export type DurationKeys = keyof typeof DURATION_KEY_MAP;
 
 interface TeaPage {
   teas: Tea[];
@@ -86,12 +87,16 @@ const getTeaInfo = async (tea: Tea): Promise<TeaInfo> => {
         ).map((element) => element.textContent || "");
         let duration: Duration | undefined;
         if (durationText) {
-          const [rawValue, timeAmount] = durationText.split(" ");
-          duration = Duration.fromObject({
-            [DURATION_KEY_MAP[
-              timeAmount as keyof typeof DURATION_KEY_MAP
-            ]]: rawValue,
-          });
+          const splitDurationValues = durationText.split(" ");
+          const durationObject: {
+            [k in typeof DURATION_KEY_MAP[DurationKeys]]?: number;
+          } = {};
+          for (let i = 0; i < splitDurationValues.length; i += 2) {
+            durationObject[
+              DURATION_KEY_MAP[splitDurationValues[i + 1] as DurationKeys]
+            ] = Number(splitDurationValues[i]);
+          }
+          duration = Duration.fromObject(durationObject);
         }
         return {
           type,
