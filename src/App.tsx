@@ -147,6 +147,9 @@ export default function App() {
     <div className="App">
       <Button onClick={() => setTeaType("all-products")}>All</Button>
       <Button onClick={() => setTeaType("oolong")}>Oolong</Button>
+      <Button onClick={() => setTeaType("black")}>Black</Button>
+      <Button onClick={() => setTeaType("pu-erh")}>Pu-erh</Button>
+      <Button onClick={() => setTeaType("green")}>Green</Button>
       <List
         bordered
         loading={teas.length === 0}
