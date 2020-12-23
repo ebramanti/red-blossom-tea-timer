@@ -183,7 +183,7 @@ export default function App() {
             {tea.brewingInfo.map((brewInstructions, index) => (
               <Tabs.TabPane tab={brewInstructions.type} key={index + 1}>
                 <BrewingPaneInfo
-                  key={brewInstructions.type}
+                  key={`${tea.name}-${brewInstructions.type}`}
                   {...brewInstructions}
                 />
               </Tabs.TabPane>
